@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {
     List as MUIList, 
     ListItem, 
@@ -12,13 +12,19 @@ import {
 //using as MUIList because this component is called List
 import { Delete, MoneyOff} from '@material-ui/icons'
 
+import {ExpenseTrackerContext} from '../../../context/context'
+
 import useStyles from './styles'
 
 
 const List = () => {
     const classes = useStyles();
-    
-    
+    //context used by using hooks
+    //const globalState = useContext(ExpenseTrackerContext);
+    //CAN DESTRUCTURE WHICH context we need
+    const {deleteTransaction} = useContext(ExpenseTrackerContext)
+
+    //console.log(deleteTransaction);
 
     //temporary fake transactions
     const transactions = [

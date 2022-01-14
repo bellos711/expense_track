@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
     Grid,
     Button,
@@ -12,8 +12,17 @@ import {
 
 import useStyles from './styles'
 
+//put all of our inputs in a state
+const initialState = {
+    amount: '',
+    category: '',
+    type: 'Income',
+    date: new Date(),
+}
+
 const Form = () => {
     const classes = useStyles();
+    const [formData, setFormData] = useState(initialState)
 
     return (
         <Grid container spacing={2}>
@@ -25,7 +34,7 @@ const Form = () => {
             <Grid item xs={6}>
                 <FormControl fullWidth>
                     <InputLabel>Type</InputLabel>
-                    <Select>
+                    <Select value={formData.type}>
                         <MenuItem value="Income">Income</MenuItem>
                         <MenuItem value="Expense">Expense</MenuItem>
                     </Select>
