@@ -22,35 +22,35 @@ const List = () => {
     //context used by using hooks
     //const globalState = useContext(ExpenseTrackerContext);
     //CAN DESTRUCTURE WHICH context we need
-    const {deleteTransaction} = useContext(ExpenseTrackerContext)
+    const {deleteTransaction, transactions} = useContext(ExpenseTrackerContext)
 
     //console.log(deleteTransaction);
 
-    //temporary fake transactions
-    const transactions = [
-        {
-            id: 1,
-            type: "Income",
-            category: 'Salary',
-            amount: 1000,
-            date: "Thursday, Jan 15",
-        },
-        {
-            id: 2,
-            type: "Expense",
-            category: 'Rent',
-            amount: 500,
-            date: "Thursday, Jan 17",
-        },
-        {
-            id: 3,
-            type: "Income",
-            category: 'Business',
-            amount: 100,
-            date: "Thursday, Jan 22",
-        }
+    //temporary fake transactions it is now passed from the context
+    // const transactions = [
+    //     {
+    //         id: 1,
+    //         type: "Income",
+    //         category: 'Salary',
+    //         amount: 1000,
+    //         date: "Thursday, Jan 15",
+    //     },
+    //     {
+    //         id: 2,
+    //         type: "Expense",
+    //         category: 'Rent',
+    //         amount: 500,
+    //         date: "Thursday, Jan 17",
+    //     },
+    //     {
+    //         id: 3,
+    //         type: "Income",
+    //         category: 'Business',
+    //         amount: 100,
+    //         date: "Thursday, Jan 22",
+    //     }
         
-    ];
+    // ];
 
     return (
         <MUIList dense={false} className={classes.list}>
@@ -67,7 +67,7 @@ const List = () => {
                         </ListItemAvatar>
                         <ListItemText primary={transaction.category} secondary={`$${transaction.amount} - ${transaction.date}`}/>
                         <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label='delete' onClick="">
+                            <IconButton edge="end" aria-label='delete' onClick={() => {deleteTransaction(transaction.id)}}>
                                 <Delete />
                             </IconButton>
                         </ListItemSecondaryAction>

@@ -32,11 +32,13 @@ export const Provider = ({children}) => {
     }
         //these actions have to be passed through our entire application context
 
+        // console.log(transactions)//checking if we are getting transactions from the formdata
 
     return(
         <ExpenseTrackerContext.Provider value={{
             deleteTransaction,
-            addTransaction
+            addTransaction,
+            transactions
         }}>
             {/*Temporary static value appName will have all data about transaction balance adding deleting*/}
             {children}

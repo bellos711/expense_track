@@ -5,10 +5,12 @@ const contextReducer = (state, action) => {
 
 
     let transactions;
+
     switch (action.type) {
-        case 'DELETE_TANSACTION':
+        case 'DELETE_TRANSACTION':
             //filter out the array where show everything except the item with id specified
-            transactions = state.filter((t)=>t.id !== action.payload) //since dispatch on context.js the payload is the id
+            transactions = state.filter((transaction) => transaction.id !== action.payload); //since dispatch on context.js the payload is the id
+
             return transactions;
             //break; unreachable
         case 'ADD_TRANSACTION':
